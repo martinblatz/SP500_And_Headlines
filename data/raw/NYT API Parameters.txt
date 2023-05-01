@@ -1,0 +1,20 @@
+Query type: article search
+Max results per day: 30
+1 search/request per day
+Search options:
+	Sources:
+		New York Times
+		AP
+		Reuters
+	News Desk:
+		Business Day
+ 		Business
+ 		Financial
+ 		National
+ 		Personal Investing
+ 		Politics
+ 		U.S.
+ 		World
+
+Searches completed on 2/24/2023
+package used: pynytimes
