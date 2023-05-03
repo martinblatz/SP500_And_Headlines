@@ -7,7 +7,7 @@ This project aims to classify the financial market behavior of a day as either "
 
  
 # Summary
-The goal of this project is to predict the directionality of the S&P 500 index using only data harvested from daily news headlines. The data required to perform this study has been collected, cleaned and joined prior to the application of various NLP processing, embedding layer weightings, and machine learning models . 
+The goal of this project is to predict the directionality of the S&P 500 index using only data harvested from daily news headlines. The data required to perform this study has been collected, cleaned and joined prior to the application of various NLP processing, embedding layer weightings, and machine learning models. The full process Google Colab Notebook can be found on this project page at https://github.com/martinblatz/SP500_And_Headlines/blob/main/results/process_notebook.ipynb.
 
 # Project Description
 ## Motivation and Aims
