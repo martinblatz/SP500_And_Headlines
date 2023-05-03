@@ -1,0 +1,1 @@
+The data scraping and helper functions are located in the /results folder.
