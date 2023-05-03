@@ -16,14 +16,15 @@ Predicting the behavior of financial markets is an underlying theme to all tradi
 I initially decided to use all data from the year 2022 as a test set. I have since changed that to using a randomized train/test split, which has yielded better results. A down year, market performance in 2022 was down more days than it was up, while the opposite is true for the other years in the dataset. This resulted in many models overpredicting "up" days and yielding poor predictive performance. I considered including past market performance measures such as the simple
 ## Dataset
 The New York Times maintains a documented and freely available interface to query their archived and current content. Additional information can be found at https://developer.nytimes.com/apis. The query written for this project retrieves a maximum of 30 headline results per day, sources articles from the New York Times, Associated Press, and Reuters, and filters for the following news desks:
-•	Business Day
-•	Business
-•	Financial
-•	National
-•	Personal Investing
-•	Politics
-•	U.S.
-•	World
+
+-	Business Day
+-	Business
+-	Financial
+-	National
+-	Personal Investing
+-	Politics
+-	U.S.
+-	World
 
 All searches were completed between 2/23/2023 and 2/26/2024. A total of 5 years of data was collected, starting on January 1, 2018 and continuing through December 31, 2022. The resulting New York Times data set is 1825 entries with 1 date column and 30 individual headline columns. Each entry contains at least 2 headlines, and only 90 entries contain fewer than 6 headlines for the day.
 
