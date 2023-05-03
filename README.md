@@ -8,6 +8,7 @@ This project aims to classify the financial market behavior of a day as either "
  
 # Summary
 The goal of this project is to predict the directionality of the S&P 500 index using only data harvested from daily news headlines. The data required to perform this study has been collected, cleaned and joined prior to the application of various NLP processing, embedding layer weightings, and machine learning models . 
+
 # Project Description
 ## Motivation and Aims
 Predicting the behavior of financial markets is an underlying theme to all trading and investing strategies. Being able to predict the directionality of the stock market with even moderate accuracy will allow an analyst to maximize trading profitability through informed positioning. Using the daily news headlines and previous S&P market performance information, can the direction of the stock market for the following day be predicted with greater than 55% accuracy? This is a classification machine learning question which looks to predict if each day belongs to category A (a down day) or category B (an up day).
@@ -32,13 +33,15 @@ The NYT data was a more complicated process. Each search request returns a tiere
 The only additional data cleaning necessary was to standardize the "Date" column to ensure a clean join between the two sets of data. Then, the NYT data was left joined with the financial data. This approach left weekend news data without matching financial data, but automatically trimmed the excess financial data. After the join, entries where no financial data is present are dropped. A label column is calculated to represent the dependent variable:  1 - the market went up or 0 - the market went down or stayed even.
 The resulting cleaned and joined data set was reviewed using a grid of scatter and hysteresis plots. As expected, the open, low, high, and close values were highly correlated since they are all temporal variations of each day’s market price action.  The text processing step involved joining each headline together in a single column, tokenizing the words, converting everything to lowercase, removing numbers, stop words, punctuation, and finally lemmatizing the remaining words. Additional exploratory visualizations were created using word clouds, but many of the same key words were present in both classes of the dataset.
 A random forest classifier model was fit to the vectorized results of both a TF-IDF and count vector algorithm with poor to moderate results near or below 50% accuracy rates on the test data set. Then, the tokenized data was used to build a custom Word2Vec embedding layer using both the skip gram and bag of words approaches. The custom Word2Vec weightings were then applied to the tokenized headline data and the results used as input vectors for both a random forest classifier and SVM classifier. I began a wide parameter grid search and manually reduced the parameter options until the model was no longer obviously overfitting the data. This process was repeated for each combination of embedding layer (custom, Google Word2Vec, Twitter GloVe) and classification model (SVM, random forest). For each of the 6 models, accuracy metrics were printed and a confusion matrix displayed for reference. The dataset was split into random training and test sets 30 times and the most promising modeling approach was implemented for each iteration to obtain a mean accuracy performance for the model and ensure that the results are statistically significant rather than a fluke event.
+
 # Conclusion
 The most effective classifier model created during the model revision process described was a random forest classifier using the Twitter pretrained GloVe embedding layer weightings. The hyperparameters used were as follows:
-•	Selection criterion: gini
-•	Number of estimators: 5
-•	Max features: square root
-•	Max depth: 3
-•	Max leaf nodes: 3
+
+- Selection criterion: gini
+- Number of estimators: 5
+- Max features: square root
+- Max depth: 3
+- Max leaf nodes: 3
 The model consistently yields classifier accuracy on the test data set over 55%, which was the goal of this project. The confusion matrix below represents an instantiation of the model which resulted in an accuracy score of 58.7%. However, we are not able to reject the null hypothesis that news headline data can't be used to predict S&P directionality with an accuracy greater than 55% since a one sided t-test on 30 iterations of the model results in a p value of greater than 0.05. 
  
 Despite the inability to reject the null hypothesis, the model created during this study still shows promise. 53.9% of the days in the dataset are “up” days in the market. A one sided t-test comparing model accuracy to 53.9% results in a statistically significant, though modest, improvement using the model. It is likely that model performance could be further improved by incorporating historical price action of the market. Other future work towards incremental improvements could include the implementation of LSTM and an approach that uses data from the past N days to predict the market performance on day N+1.
